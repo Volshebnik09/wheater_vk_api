@@ -50,7 +50,6 @@ try:
 
 
 
-
 	cur_temperature=cur_temperature.text.strip()
 	output_str+=("Температура сейчас: " +cur_temperature + "\n") 
 
@@ -80,13 +79,6 @@ try:
 			output_str+=("в " + str(25-td*6) + "ч. " + all_temperatures[temp]+ "\n")
 			td-=1
 			temp+=1
-
-
-
-	
-
-
-
 
 except Exception as e:
 	print(e)
