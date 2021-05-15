@@ -7,7 +7,7 @@ import datetime
 import keep_alive
 keep_alive.keep_alive()
 
-vk = vk_api.VkApi(token="token")
+vk = vk_api.VkApi(token="token") #тут нужен ваш токен
 vk._auth_token()
 
 p = -1
