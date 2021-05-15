@@ -3,6 +3,7 @@
 - предначзначен для парсинга погоды с сервиса rp5 и отправке данных в вк
 
 ## 1. Что нужно для работы?
+- version python > 2.7
 - pip install flask
 - pip install vk_api
 - pip install beautifulsoup4 lxml
