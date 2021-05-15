@@ -1,11 +1,13 @@
-# wheater_vk_api
-You need only vk token from group
+## 0. О боте
+- мой первый бот размещенный на GitHub 
+- предначзначен для парсинга погоды с сервиса rp5 и отправке данных в вк
 
-in main.py "token" = your token
+## 1. Что нужно для работы?
+- pip install flask
+- pip install vk_api
+- pip install beautifulsoup4 lxml
 
-for work you need:
-  pip install flask
-  
-  pip install vk_api
-  
-  pip install beautifulsoup4 lxml
+## 2. Запуск
+- ввести токен группы в main.py "token"
+- в parser_1 ввести url сайта rp5 на ваш город.
+- запустить main.py
