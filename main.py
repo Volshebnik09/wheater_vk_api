@@ -52,8 +52,8 @@ while True:
 				elif (message.lower()) == "/обнови данные":
 					from parser_1 import suc
 					msg(suc)
-				elif message.lower() == "ростик сосет":
-					msg("Да Ростик сосет. Он же сраный многопиздоблядун")
+				elif message.lower() == "?":
+					msg("?")
 				elif message.lower() == ".time" or message.lower() == "/time":
 				  msg(datetime.datetime.today())
         
