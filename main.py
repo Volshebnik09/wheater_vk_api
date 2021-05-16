@@ -1,12 +1,17 @@
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import vk_api
 import time
-import json
 import datetime
+import re
+import parser_1
+import parser_2
+parser_1.init()
 
-import keep_alive
-keep_alive.keep_alive()
+#import keep_alive
+#keep_alive.keep_alive()
 
+
+vk = vk_api.VkApi
 vk = vk_api.VkApi(token="token")
 vk._auth_token()
 
@@ -29,7 +34,7 @@ while True:
 			time=datetime.datetime.today().timetuple()[3]
 			if time != p:
 				p=time
-				from parser_1 import suc
+				parser_1.init()
 			if event.type == VkBotEventType.MESSAGE_NEW:
 
 				peer_id = event.object.message["peer_id"] 
@@ -47,18 +52,25 @@ while True:
 				print("сообщение: " + str(message))
 				
 				if (message.lower() == "/погода") or (message.lower() == ".погода") :
-					from parser_2 import output_str
-					msg(str(output_str))
+					parser_2.init()
+					msg(parser_2.output_str)
 				elif (message.lower()) == "/обнови данные":
-					from parser_1 import suc
-					msg(suc)
-				elif message.lower() == "ростик сосет":
-					msg("Да Ростик сосет. Он же сраный многопиздоблядун")
+					parser_1.init()
+					msg(parser_1.suc)
+					print(parser_1.url)
+				elif message.lower() == "sic":
+					msg("ss")
 				elif message.lower() == ".time" or message.lower() == "/time":
-				  msg(datetime.datetime.today())
-        
-
-
+					msg(datetime.datetime.today())
+				temp = (message.lower().find("обнови ссылку 223355") != -1)
+				if temp == True:
+					msg("Обновление ссылки...")
+					l = re.findall("(?P<url>https?://[^\s]+)", message)
+					if len(l) == 1:
+						parser_1.url= l[0]
+						msg("ссылка изменена.")
+						parser_1.init()
+						msg(suc)
 	except Exception as e:
 		print(e)
 
