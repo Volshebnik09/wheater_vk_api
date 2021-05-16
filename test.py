@@ -7,14 +7,12 @@ import parser_1
 import parser_2
 parser_1.init()
 
-#import keep_alive
-#keep_alive.keep_alive()
-
+import keep_alive
+keep_alive.keep_alive()
 
 
 vk = vk_api.VkApi
-vk = vk_api.VkApi(token="token") #тут нужен ваш токен
-
+vk = vk_api.VkApi(token="b44083a4043212e45cf053436d4c77eef6e4a5d605add94638450ed83dd4f1ee004b16089d7edf2866720")
 vk._auth_token()
 
 p = -1
@@ -56,19 +54,13 @@ while True:
 				if (message.lower() == "/погода") or (message.lower() == ".погода") :
 					parser_2.init()
 					msg(parser_2.output_str)
+					msg("Погода взята из " + parser_1.url)
 				elif (message.lower()) == "/обнови данные":
-
 					parser_1.init()
 					msg(parser_1.suc)
 					print(parser_1.url)
 				elif message.lower() == "sic":
 					msg("ss")
-
-					from parser_1 import suc
-					msg(suc)
-				elif message.lower() == "?":
-					msg("?")
-
 				elif message.lower() == ".time" or message.lower() == "/time":
 					msg(datetime.datetime.today())
 				temp = (message.lower().find("обнови ссылку 223355") != -1)
@@ -79,7 +71,7 @@ while True:
 						parser_1.url= l[0]
 						msg("ссылка изменена.")
 						parser_1.init()
-						msg(suc)
+						msg(parser_1.suc)
 	except Exception as e:
 		print(e)
 
