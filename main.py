@@ -11,8 +11,12 @@ parser_1.init()
 #keep_alive.keep_alive()
 
 
+
 vk = vk_api.VkApi
 vk = vk_api.VkApi(token="token")
+
+vk = vk_api.VkApi(token="token") #тут нужен ваш токен
+
 vk._auth_token()
 
 p = -1
@@ -55,11 +59,18 @@ while True:
 					parser_2.init()
 					msg(parser_2.output_str)
 				elif (message.lower()) == "/обнови данные":
+
 					parser_1.init()
 					msg(parser_1.suc)
 					print(parser_1.url)
 				elif message.lower() == "sic":
 					msg("ss")
+
+					from parser_1 import suc
+					msg(suc)
+				elif message.lower() == "?":
+					msg("?")
+
 				elif message.lower() == ".time" or message.lower() == "/time":
 					msg(datetime.datetime.today())
 				temp = (message.lower().find("обнови ссылку 223355") != -1)
