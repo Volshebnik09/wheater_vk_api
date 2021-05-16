@@ -71,7 +71,7 @@ while True:
 
 				elif message.lower() == ".time" or message.lower() == "/time":
 					msg(datetime.datetime.today())
-				temp = (message.lower().find("обнови ссылку 223355") != -1)
+				temp = (message.lower().find("обнови ссылку") != -1)
 				if temp == True:
 					msg("Обновление ссылки...")
 					l = re.findall("(?P<url>https?://[^\s]+)", message)
