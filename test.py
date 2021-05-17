@@ -36,13 +36,14 @@ while True:
 				p=time
 				parser_1.init()
 			if event.type == VkBotEventType.MESSAGE_NEW:
-
+				print("хуй")
 				peer_id = event.object.message["peer_id"] 
 				message = event.object.message["text"].lower()
 				id_from =  event.object.message["from_id"]
 				user_name = vk.method("users.get", {"user_ids": id_from})[0]["last_name"]
 				user_name += " " +vk.method("users.get", {"user_ids": id_from})[0]["first_name"]
 				#conversation_id = event.object.message["conversation_message_id"] id сообщения
+				
 				print("----------------------------------------------------")
 				if (peer_id >= 2000000001):
 					print("Из беседы: " + (vk.method("messages.getConversationsById", {"peer_ids": peer_id})['items'][0]["chat_settings"]["title"]))
@@ -54,7 +55,7 @@ while True:
 				if (message.lower() == "/погода") or (message.lower() == ".погода") :
 					parser_2.init()
 					msg(parser_2.output_str)
-					msg("Погода взята из " + parser_1.url)
+					msg("Источник:  " + parser_1.url)
 				elif (message.lower()) == "/обнови данные":
 					parser_1.init()
 					msg(parser_1.suc)
@@ -63,7 +64,7 @@ while True:
 					msg("ss")
 				elif message.lower() == ".time" or message.lower() == "/time":
 					msg(datetime.datetime.today())
-				temp = (message.lower().find("обнови ссылку 223355") != -1)
+				temp = (message.lower().find("обнови ссылку") != -1)
 				if temp == True:
 					msg("Обновление ссылки...")
 					l = re.findall("(?P<url>https?://[^\s]+)", message)
